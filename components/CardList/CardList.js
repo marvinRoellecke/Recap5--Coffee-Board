@@ -1,9 +1,11 @@
 import Card from "../Card/Card";
 
-export default function CardList() {
+export default function CardList({ notes }) {
   return (
     <>
-      <Card />
+      {notes.map((note) => (
+        <Card key={note.author} />
+      ))}
     </>
   );
 }
