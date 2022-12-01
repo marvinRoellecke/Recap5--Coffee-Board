@@ -61,7 +61,7 @@ const StyledForm = styled.form`
 `;
 
 const StyledInput = styled.input`
-  height: 7rem;
+  height: 5rem;
   padding: 1rem;
   width: 35%;
   background: none;
@@ -80,8 +80,8 @@ const StyledInput = styled.input`
 `;
 
 const StyledButton = styled.button`
-  height: 7rem;
-  width: 7rem;
+  height: 5rem;
+  width: 5rem;
   font-size: 3rem;
   background: none;
   color: white;

@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
 
   #__next {
     display: grid;
-    grid-template-rows: 4rem auto 8rem;
+    grid-template-rows: 4rem auto 6rem;
     height: 100vh;
   }
 
