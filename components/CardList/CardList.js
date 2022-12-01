@@ -7,7 +7,7 @@ export default function CardList({ notes, onDeleteNote }) {
       <StyledCardList>
         {notes.map((note) => (
           <Card
-            key={note.author}
+            key={note.id}
             note={note.note}
             author={note.author}
             id={note.id}
@@ -24,4 +24,5 @@ const StyledCardList = styled.section`
   flex-direction: column;
   align-items: center;
   margin: 1rem 0;
+  gap: 0.5rem;
 `;
