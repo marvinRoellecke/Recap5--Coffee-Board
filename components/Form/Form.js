@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 export default function Form({ onCreateNewNote }) {
   function handleSubmit(event) {
     event.preventDefault();
@@ -16,14 +18,41 @@ export default function Form({ onCreateNewNote }) {
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
+    <StyledFooter>
+      <StyledForm onSubmit={handleSubmit}>
         <label htmlFor="note"></label>
-        <input type="text" id="note" name="note" required></input>
+        <StyledInput type="text" id="note" name="note" required></StyledInput>
         <label htmlFor="author"></label>
-        <input type="text" id="author" name="author" required></input>
-        <button type="submit">+</button>
-      </form>
-    </>
+        <StyledInput
+          type="text"
+          id="author"
+          name="author"
+          required
+        ></StyledInput>
+        <StyledButton type="submit">+</StyledButton>
+      </StyledForm>
+    </StyledFooter>
   );
 }
+
+const StyledFooter = styled.footer`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`;
+
+const StyledInput = styled.input`
+  height: 7rem;
+  width: 35%;
+`;
+
+const StyledButton = styled.button`
+  height: 7rem;
+  width: 7rem;
+`;
