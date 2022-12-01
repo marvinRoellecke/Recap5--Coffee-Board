@@ -5,9 +5,9 @@ import { useState } from "react";
 import styled from "styled-components";
 
 const initialNotes = [
-  { note: "Custom Hooks", author: "Alex" },
-  { note: "Styled Components", author: "Merle" },
-  { note: "Next.js", author: "Thomas" },
+  { id: 1, note: "Custom Hooks", author: "Alex" },
+  { id: 2, note: "Styled Components", author: "Merle" },
+  { id: 3, note: "Next.js", author: "Thomas" },
 ];
 
 export default function HomePage() {
@@ -17,11 +17,15 @@ export default function HomePage() {
     setNotes([...notes, newNote]);
   }
 
+  function handleDeleteNote(id) {
+    setNotes(notes.filter((note) => note.id !== id));
+  }
+
   return (
     <>
       <Header />
       <StyledMain>
-        <CardList notes={notes} />
+        <CardList notes={notes} onDeleteNote={handleDeleteNote} />
       </StyledMain>
       <Form onCreateNewNote={handleCreateNewNote} />
     </>

@@ -1,11 +1,19 @@
 import styled from "styled-components";
 
-export default function Card({ note, author }) {
+export default function Card({ note, author, id, onDeleteNote }) {
   return (
     <>
       <StyledCard>
         <h2>{note}</h2>
         <p>{author}</p>
+        <button
+          type="button"
+          onClick={() => {
+            onDeleteNote(id);
+          }}
+        >
+          delete note
+        </button>
       </StyledCard>
     </>
   );

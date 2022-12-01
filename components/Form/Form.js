@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { nanoid } from "nanoid";
 
 export default function Form({ onCreateNewNote }) {
   function handleSubmit(event) {
@@ -10,6 +11,7 @@ export default function Form({ onCreateNewNote }) {
     const newNote = {
       note: note,
       author: author,
+      id: nanoid(),
     };
 
     onCreateNewNote(newNote);
