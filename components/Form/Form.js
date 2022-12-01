@@ -5,36 +5,36 @@ export default function Form({ onCreateNewNote }) {
   function handleSubmit(event) {
     event.preventDefault();
     const form = event.target.elements;
-    const note = form.note.value;
-    const author = form.author.value;
+    const text = form.text.value;
+    const name = form.name.value;
 
     const newNote = {
-      note: note,
-      author: author,
+      text: text,
+      name: name,
       id: nanoid(),
     };
 
     onCreateNewNote(newNote);
     event.target.reset();
-    form.note.focus();
+    form.text.focus();
   }
 
   return (
     <StyledFooter>
       <StyledForm onSubmit={handleSubmit}>
-        <label htmlFor="note"></label>
+        <label htmlFor="text"></label>
         <StyledInput
           type="text"
-          id="note"
-          name="note"
+          id="text"
+          name="text"
           placeholder="Type your thoughts..."
           required
         ></StyledInput>
-        <label htmlFor="author"></label>
+        <label htmlFor="name"></label>
         <StyledInput
           type="text"
-          id="author"
-          name="author"
+          id="name"
+          name="name"
           placeholder="Your Name"
           required
         ></StyledInput>
