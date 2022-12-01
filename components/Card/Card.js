@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { AiFillDelete } from "react-icons/ai";
 
 export default function Card({ note, author, id, onDeleteNote }) {
   return (
@@ -6,14 +7,14 @@ export default function Card({ note, author, id, onDeleteNote }) {
       <StyledCard>
         <h2>{note}</h2>
         <p>{author}</p>
-        <button
+        <StyledTrashButton
           type="button"
           onClick={() => {
             onDeleteNote(id);
           }}
         >
-          delete note
-        </button>
+          <AiFillDelete />
+        </StyledTrashButton>
       </StyledCard>
     </>
   );
@@ -24,4 +25,18 @@ const StyledCard = styled.article`
   border-radius: 10px;
   width: 90%;
   padding: 10px;
+  position: relative;
+`;
+
+const StyledTrashButton = styled.button`
+  background: none;
+  border: none;
+  font-size: 2rem;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;

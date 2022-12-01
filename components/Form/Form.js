@@ -61,11 +61,11 @@ const StyledForm = styled.form`
 `;
 
 const StyledInput = styled.input`
-  height: 7rem;
+  height: 5rem;
   padding: 1rem;
   width: 35%;
   background: none;
-  color: grey;
+  color: white;
   border: none;
   font-size: 1rem;
   box-shadow: inset -8px -8px 16px rgba(255, 255, 255, 0.25),
@@ -73,14 +73,15 @@ const StyledInput = styled.input`
   border-radius: 10px;
 
   &::placeholder {
-    color: white;
+    color: grey;
     opacity: 1;
+    text-align: center;
   }
 `;
 
 const StyledButton = styled.button`
-  height: 7rem;
-  width: 7rem;
+  height: 5rem;
+  width: 5rem;
   font-size: 3rem;
   background: none;
   color: white;
