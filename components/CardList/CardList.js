@@ -1,17 +1,18 @@
 import Card from "../Card/Card";
 import styled from "styled-components";
 
-export default function CardList({ notes, onDeleteNote }) {
+export default function CardList({ notes, onDeleteNote, onEditedNote }) {
   return (
     <>
       <StyledCardList>
         {notes.map((note) => (
           <Card
             key={note.id}
-            note={note.note}
-            author={note.author}
+            text={note.text}
+            name={note.name}
             id={note.id}
             onDeleteNote={onDeleteNote}
+            onEditedNote={onEditedNote}
           />
         ))}
       </StyledCardList>
