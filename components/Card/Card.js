@@ -52,6 +52,7 @@ export default function Card({ text, name, id, onDeleteNote, onEditedNote }) {
           </section>
         )}
         {isEditing && (
+          //<Form onSubmit={handleSaveChanges} defaultValue={defaultValue} name={name} text={text} editForm />
           <form onSubmit={handleSaveChanges}>
             <label htmlFor="text"></label>
             <StyledEditInput
@@ -94,6 +95,7 @@ const StyledTrashButton = styled.button`
   position: absolute;
   right: 1rem;
   top: 1rem;
+  color: black;
 
   &:hover {
     cursor: pointer;
@@ -112,6 +114,7 @@ const StyledEditButton = styled.button`
   position: absolute;
   right: 1rem;
   bottom: 1rem;
+  color: black;
 `;
 
 const StyledSaveButton = styled.button`
@@ -121,4 +124,5 @@ const StyledSaveButton = styled.button`
   position: absolute;
   right: 1rem;
   top: 1rem;
+  color: black;
 `;
