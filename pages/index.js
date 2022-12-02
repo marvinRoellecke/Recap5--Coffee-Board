@@ -1,34 +1,67 @@
 import Header from "../components/Header/Header";
 import CardList from "../components/CardList/CardList";
 import Form from "../components/Form/Form";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
-const initialNotes = [
-  { id: 1, text: "Custom Hooks", name: "Alex" },
-  { id: 2, text: "Styled Components", name: "Merle" },
-  { id: 3, text: "Next.js", name: "Thomas" },
-];
-
 export default function HomePage() {
-  const [notes, setNotes] = useState(initialNotes);
+  const [notes, setNotes] = useState([]);
 
-  function handleCreateNewNote(newNote) {
-    setNotes([...notes, newNote]);
+  async function getNotes() {
+    const response = await fetch(
+      "https://lean-coffee-board-api-nextjs.vercel.app/api/questions"
+    );
+    const noteList = await response.json();
+    setNotes(noteList);
   }
 
-  function handleDeleteNote(id) {
-    setNotes(notes.filter((note) => note.id !== id));
+  useEffect(() => {
+    getNotes();
+  }, []);
+
+  async function handleCreateNewNote(newNote) {
+    await fetch(
+      "https://lean-coffee-board-api-nextjs.vercel.app/api/questions",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newNote),
+      }
+    );
+    getNotes();
+    // war vorher hier setNotes([...notes, newNote]);
   }
 
-  function handleEditedNote(editedNote, id) {
-    setNotes(
+  async function handleDeleteNote(id) {
+    await fetch(
+      "https://lean-coffee-board-api-nextjs.vercel.app/api/questions/" + id,
+      {
+        method: "DELETE",
+      }
+    );
+    getNotes();
+    // hat vorher hier gestanden setNotes(notes.filter((note) => note.id !== id));
+  }
+
+  async function handleEditedNote(editedNote, id) {
+    await fetch(
+      "https://lean-coffee-board-api-nextjs.vercel.app/api/questions/" + id,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(editedNote),
+      }
+    );
+    getNotes();
+    /* 
+   hat vorher hier gestanden
+   setNotes(
       notes.map((note) =>
         id === note.id
           ? { ...note, text: editedNote.text, name: editedNote.name }
           : note
       )
-    );
+    );*/
   }
 
   return (
