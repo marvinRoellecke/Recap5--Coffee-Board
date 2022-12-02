@@ -13,10 +13,15 @@ export default function HomePage() {
     );
     const noteList = await response.json();
     setNotes(noteList);
+    console.log("rerender");
   }
 
   useEffect(() => {
     getNotes();
+    const intervalID = setInterval(getNotes, 10000);
+    return () => {
+      clearInterval(intervalID);
+    };
   }, []);
 
   async function handleCreateNewNote(newNote) {
@@ -74,11 +79,21 @@ export default function HomePage() {
           onEditedNote={handleEditedNote}
         />
       </StyledMain>
-      <Form onCreateNewNote={handleCreateNewNote} />
+      <StyledFooter>
+        <Form onCreateNewNote={handleCreateNewNote} />
+      </StyledFooter>
     </>
   );
 }
 
 const StyledMain = styled.main`
   overflow-y: scroll;
+`;
+
+const StyledFooter = styled.footer`
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

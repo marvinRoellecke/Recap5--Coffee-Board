@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { nanoid } from "nanoid";
+import { AiFillCheckSquare } from "react-icons/ai";
 
 export default function Form({ onCreateNewNote }) {
   function handleSubmit(event) {
@@ -20,38 +21,29 @@ export default function Form({ onCreateNewNote }) {
   }
 
   return (
-    <StyledFooter>
-      <StyledForm onSubmit={handleSubmit}>
-        <label htmlFor="text"></label>
-        <StyledInput
-          type="text"
-          id="text"
-          name="text"
-          placeholder="Type your thoughts..."
-          required
-        ></StyledInput>
-        <label htmlFor="name"></label>
-        <StyledInput
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Your Name"
-          required
-        ></StyledInput>
-        <StyledButton type="submit">+</StyledButton>
-      </StyledForm>
-    </StyledFooter>
+    <StyledForm onSubmit={handleSubmit}>
+      <label htmlFor="text"></label>
+      <StyledInput
+        type="text"
+        id="text"
+        name="text"
+        placeholder="Type your thoughts..."
+        required
+      ></StyledInput>
+      <label htmlFor="name"></label>
+      <StyledInput
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Your Name"
+        required
+      ></StyledInput>
+      <StyledButton type="submit">+</StyledButton>
+    </StyledForm>
   );
 }
 
-const StyledFooter = styled.footer`
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-  background-color: #433633;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+//{editForm ? <AiFillCheckSquare /> : + }
 
 const StyledForm = styled.form`
   display: flex;
@@ -65,11 +57,9 @@ const StyledInput = styled.input`
   padding: 1rem;
   width: 35%;
   background: none;
-  color: white;
+  color: black;
   border: none;
   font-size: 1rem;
-  box-shadow: inset -8px -8px 16px rgba(255, 255, 255, 0.25),
-    inset 8px 8px 16px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 
   &::placeholder {
@@ -84,6 +74,6 @@ const StyledButton = styled.button`
   width: 5rem;
   font-size: 3rem;
   background: none;
-  color: white;
+  color: black;
   border-radius: 10px;
 `;
