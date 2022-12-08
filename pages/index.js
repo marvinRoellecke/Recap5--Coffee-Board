@@ -8,9 +8,7 @@ export default function HomePage() {
   const [notes, setNotes] = useState([]);
 
   async function getNotes() {
-    const response = await fetch(
-      "https://lean-coffee-board-api-nextjs.vercel.app/api/questions"
-    );
+    const response = await fetch("/api/questions");
     const noteList = await response.json();
     setNotes(noteList);
     console.log("rerender");
@@ -25,38 +23,29 @@ export default function HomePage() {
   }, []);
 
   async function handleCreateNewNote(newNote) {
-    await fetch(
-      "https://lean-coffee-board-api-nextjs.vercel.app/api/questions",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newNote),
-      }
-    );
+    await fetch("/api/questions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newNote),
+    });
     getNotes();
     // war vorher hier setNotes([...notes, newNote]);
   }
 
   async function handleDeleteNote(id) {
-    await fetch(
-      "https://lean-coffee-board-api-nextjs.vercel.app/api/questions/" + id,
-      {
-        method: "DELETE",
-      }
-    );
+    await fetch("/api/questions/" + id, {
+      method: "DELETE",
+    });
     getNotes();
     // hat vorher hier gestanden setNotes(notes.filter((note) => note.id !== id));
   }
 
   async function handleEditedNote(editedNote, id) {
-    await fetch(
-      "https://lean-coffee-board-api-nextjs.vercel.app/api/questions/" + id,
-      {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(editedNote),
-      }
-    );
+    await fetch("/api/questions/" + id, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(editedNote),
+    });
     getNotes();
     /* 
    hat vorher hier gestanden
