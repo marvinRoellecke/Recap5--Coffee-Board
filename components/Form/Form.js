@@ -43,8 +43,6 @@ export default function Form({ onCreateNewNote }) {
   );
 }
 
-//{editForm ? <AiFillCheckSquare /> : + }
-
 const StyledForm = styled.form`
   display: flex;
   justify-content: center;
